@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <title>My Calendar App</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <!-- Your app content will go here -->
-    </div>
+    <div id="app" class="container mt-4">
+        <div id="sections-container" class="mb-4">
+            <h1 class="display-4">Sections</h1>
+            
+            <form id="section-form" class="mb-3">
+                <div class="input-group">
+                    <input type="text" id="section-input" class="form-control" placeholder="Add a new section" required>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-outline-secondary">Add Section</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <div id="calendar-container">
+            <h1 class="display-4">Calendar</h1>
+        </div>
+    </div>    
     <script src="app.js"></script>
 </body>
 </html>
