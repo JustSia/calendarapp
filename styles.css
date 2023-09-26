@@ -1,32 +1,50 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #app {
     max-width: 900px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .section, .subsection {
-    background-color: #fff;
-    margin-bottom: 15px;
+    background-color: #e6e6e6;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
 }
 
-button {
-    margin-top: 10px;
+.input-group, .btn {
+    border-radius: 5px;
 }
 
 .btn-delete {
-    font-size: 1.5rem;
-    opacity: 0.5; 
-    position: relative;
-    top: -4px; 
+    font-size: 20px;
+    color: #999;
+    background: none;
+    border: none;
     padding: 0;
+    cursor: pointer;
 }
 
 .btn-delete:hover {
-    opacity: 1;
-    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.section:hover, .subsection:hover {
+    background-color: #d4d4d4;
+}
+
+@media (max-width: 768px) {
+    #app {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 10px;
+    }
 }
