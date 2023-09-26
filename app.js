@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const newSection = createSection(sectionName);
             sectionsContainer.appendChild(newSection);
             sectionInput.value = ''; // Clears the input field
+            alert('Section added successfully!'); // User feedback
         }
     });
 });
@@ -26,6 +27,11 @@ function createSection(sectionName) {
     title.className = 'd-inline-block mr-2'; // Added Bootstrap class
     title.textContent = sectionName;
     section.appendChild(title);
+    
+    // Toggle display of the subsection list when the section title is clicked
+    title.addEventListener('click', function() {
+        subsectionList.style.display = subsectionList.style.display === 'none' ? 'block' : 'none';
+    });
     
     const deleteSectionButton = document.createElement('button');
     deleteSectionButton.textContent = '×'; // "×" symbol to represent delete
@@ -47,13 +53,17 @@ function createSection(sectionName) {
     addSubsectionButton.textContent = 'Add Subsection';
     subsectionForm.appendChild(addSubsectionButton);
     
+    const subsectionList = document.createElement('ul');
+    subsectionList.className = 'list-group'; // Bootstrap class for lists
+    section.appendChild(subsectionList);
+    
     subsectionForm.addEventListener('submit', function(event) {
         event.preventDefault();
         
         const subsectionName = subsectionInput.value.trim();
         if (subsectionName) {
             const newSubsection = createSubsection(subsectionName);
-            section.appendChild(newSubsection);
+            subsectionList.appendChild(newSubsection); // Append to the list
             subsectionInput.value = '';
         }
     });
@@ -64,11 +74,10 @@ function createSection(sectionName) {
 }
 
 function createSubsection(subsectionName) {
-    const subsection = document.createElement('div');
-    subsection.className = 'subsection';
+    const subsection = document.createElement('li'); // Changed to list item
+    subsection.className = 'list-group-item d-flex justify-content-between align-items-center'; // Bootstrap classes
     
-    const title = document.createElement('h3');
-    title.className = 'd-inline-block mr-2'; // Added Bootstrap class
+    const title = document.createElement('span'); // Changed to span
     title.textContent = subsectionName;
     subsection.appendChild(title);
     
@@ -82,3 +91,4 @@ function createSubsection(subsectionName) {
     
     return subsection;
 }
+
