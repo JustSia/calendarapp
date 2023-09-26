@@ -48,3 +48,13 @@ body {
         padding: 10px;
     }
 }
+
+.list-group {
+    display: none;
+    margin-top: 10px;
+}
+
+.section:hover .list-group,
+.subsection:hover .list-group {
+    display: block;
+}
