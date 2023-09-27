@@ -122,3 +122,32 @@ function createSubsection(subsectionName) {
     return subsection;
 }
 
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        const response = await fetch('http://localhost:3000/sections');
+        
+        if(!response.ok) { // Check if response went through
+            throw Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const sections = await response.json();
+        
+        // Assuming sectionsContainer is the container where you want to append your sections
+        const sectionsContainer = document.getElementById('sections-container');
+        
+        sections.forEach(section => {
+            const newSection = createSection(section.name);
+            sectionsContainer.appendChild(newSection);
+            
+            // Assuming each section has a subsections array
+            section.subsections.forEach(subsectionName => {
+                const subsectionList = newSection.querySelector('.list-group');
+                const newSubsection = createSubsection(subsectionName);
+                subsectionList.appendChild(newSubsection);
+            });
+        });
+    } catch (error) {
+        console.error('Fetch error: ', error); // Log error to console if anything goes wrong during the fetch
+    }
+});
+
